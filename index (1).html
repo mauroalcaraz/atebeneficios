@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beneficios ATE Entre Ríos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g:#1e7e1e; --gl:#2da82d; --gb:#edf7ed;
+  --bk:#111; --tx:#1a1a1a; --mu:#5a5a5a; --bd:#e0e0e0; --r:14px;
+}
+body { font-family:'Inter','Segoe UI',Arial,sans-serif; background:#f0f2f0; color:var(--tx); }
+
+.hd { background:var(--g); padding:22px 28px 18px; }
+.hd-in { max-width:1000px; margin:0 auto; display:flex; align-items:center; gap:16px; }
+.hd-ic { width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.4); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.hd h1 { font-size:19px; font-weight:800; color:#fff; letter-spacing:-.01em; }
+.hd p  { font-size:12px; color:rgba(255,255,255,.7); margin-top:2px; }
+.hd-st { height:4px; background:var(--bk); }
+
+.tw { background:var(--bk); overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:10; }
+.tw::-webkit-scrollbar { display:none; }
+.tabs { max-width:1000px; margin:0 auto; display:flex; padding:0 16px; }
+.tab { background:none; border:none; color:rgba(255,255,255,.5); font-family:inherit; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:12px 16px; cursor:pointer; white-space:nowrap; border-bottom:3px solid transparent; transition:color .15s,border-color .15s; }
+.tab:hover { color:rgba(255,255,255,.85); }
+.tab.on { color:#fff; border-bottom-color:var(--gl); }
+
+.page { max-width:1000px; margin:0 auto; padding:32px 16px 56px; }
+.sec { margin-bottom:44px; }
+.sec-t { font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--g); border-bottom:2px solid var(--g); padding-bottom:9px; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+.sec-t svg { width:16px; height:16px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+
+.fw { height:290px; perspective:900px; cursor:pointer; }
+.fw:focus { outline:2px solid var(--g); outline-offset:3px; border-radius:var(--r); }
+.fc { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform .55s cubic-bezier(.4,0,.2,1); }
+.fw.flipped .fc { transform:rotateY(180deg); }
+.ff,.fb { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:var(--r); overflow:hidden; border:.5px solid var(--bd); }
+
+.ff { background:#fff; display:flex; flex-direction:column; }
+.fw:hover .ff { border-color:#aaa; box-shadow:0 6px 20px rgba(0,0,0,.1); }
+
+.ph { width:100%; height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px; text-align:center; gap:5px; flex-shrink:0; }
+.ph.green{background:#1e7e1e;} .ph.blue{background:#1560a0;}
+.ph.terra{background:#7a3410;} .ph.teal{background:#0d6e6e;}
+.ph.plum{background:#5a2d82;} .ph.navy{background:#1a2e5a;}
+.ph-pre  { font-size:9px; color:rgba(255,255,255,.6); letter-spacing:.1em; text-transform:uppercase; }
+.ph-name { font-size:13px; font-weight:800; color:#fff; line-height:1.2; }
+.ph-badge{ background:rgba(0,0,0,.25); color:#fff; font-size:11px; font-weight:700; padding:3px 12px; border-radius:20px; }
+.ph-sub  { font-size:10px; color:rgba(255,255,255,.6); line-height:1.3; }
+
+.fi { padding:11px 13px 13px; flex:1; display:flex; flex-direction:column; }
+.fn { font-size:13px; font-weight:700; color:var(--tx); margin-bottom:3px; line-height:1.25; }
+.fd { font-size:11px; color:var(--mu); line-height:1.45; flex:1; }
+.ft-tag { margin-top:8px; display:inline-block; font-size:10px; font-weight:700; letter-spacing:.04em; padding:3px 9px; border-radius:20px; background:var(--gb); color:var(--g); border:.5px solid #b0d8b0; }
+.fh { position:absolute; bottom:8px; right:10px; font-size:10px; color:rgba(0,0,0,.28); font-weight:500; }
+
+.fb { background:var(--g); transform:rotateY(180deg); display:flex; flex-direction:column; padding:18px 16px 14px; color:#fff; }
+.fb.blue-back { background:#1560a0; }
+.fb-t { font-size:13px; font-weight:800; color:#fff; margin-bottom:8px; line-height:1.3; }
+.fb-b { font-size:11.5px; color:rgba(255,255,255,.88); line-height:1.6; flex:1; }
+.fb-r { display:flex; gap:6px; margin-top:5px; align-items:flex-start; font-size:11.5px; color:rgba(255,255,255,.8); }
+.fb-r svg { width:12px; height:12px; flex-shrink:0; margin-top:2px; opacity:.7; }
+.fb-btn { margin-top:12px; background:#fff; border:none; border-radius:8px; padding:8px 14px; font-size:12px; font-weight:700; font-family:inherit; cursor:pointer; display:flex; align-items:center; gap:5px; width:fit-content; }
+.fb-btn.green-btn { color:var(--g); } .fb-btn.green-btn:hover { background:#e8f5e8; }
+.fb-btn.blue-btn  { color:#1560a0; }  .fb-btn.blue-btn:hover  { background:#e8f0fb; }
+.fb-x { position:absolute; top:9px; right:9px; background:rgba(255,255,255,.2); border:none; color:#fff; border-radius:50%; width:26px; height:26px; cursor:pointer; font-size:13px; display:flex; align-items:center; justify-content:center; font-family:inherit; }
+.fb-x:hover { background:rgba(255,255,255,.35); }
+
+.foot { background:var(--bk); color:rgba(255,255,255,.4); text-align:center; font-size:11px; padding:16px; }
+.foot strong { color:rgba(255,255,255,.7); }
+
+@media(max-width:480px){
+  .grid { grid-template-columns:1fr 1fr; gap:10px; }
+  .fw { height:270px; }
+  .ph { height:132px; }
+}
+@media(max-width:340px){ .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-ic">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Catálogo de Beneficios</h1>
+      <p>Asociación Trabajadores del Estado · Seccional Entre Ríos</p>
+    </div>
+  </div>
+</div>
+<div class="hd-st"></div>
+<div style="background:#f0f7f0;border-bottom:1px solid #c8e6c8;padding:9px 24px;">
+  <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e7e1e" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    <span style="font-size:12px;color:#2a6b2a;font-weight:600;font-family:Inter,sans-serif;">Afiliate y sumate a defender nuestros derechos</span>
+    <span style="font-size:11px;color:#5a5a5a;font-family:Inter,sans-serif;">·</span>
+    <a href="/cdn-cgi/l/email-protection#b8dcddd4dddfd9dcd7cbd9ccdd96dbdfddf8dfd5d9d1d496dbd7d5" style="font-size:12px;color:#1e7e1e;font-family:Inter,sans-serif;text-decoration:none;font-weight:500;"><span class="__cf_email__" data-cfemail="2246474e474543464d514356470c41454762454f434b4e0c414d4f">[email&#160;protected]</span></a>
+  </div>
+</div>
+
+<div class="tw">
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-sec="todos">Todos</button>
+    <button class="tab" data-sec="turismo">Turismo</button>
+    <button class="tab" data-sec="salud">Salud</button>
+    <button class="tab" data-sec="comercios">Comercios</button>
+    <button class="tab" data-sec="salon">Salón</button>
+    <button class="tab" data-sec="formacion">Formación</button>
+    <button class="tab" data-sec="tecnologia">Tecnología</button>
+  </div>
+</div>
+
+<div class="page" id="page"></div>
+
+<div class="foot"><strong>ATE Entre Ríos</strong> · Catálogo de Beneficios para Afiliados · 100 años de lucha · 2026</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const S = [
+  {
+    id:"turismo",
+    label:"Turismo — Viajes",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
+    items:[
+      { name:"RoadTrip Turismo", tag:"Precio especial afiliados", color:"blue",
+        ph:{pre:"RoadTrip Turismo", name:"Federación + Finde Largo", badge:"$186.000", sub:"Hotel Salto Grande · 2 noches · Termas"},
+        desc:"Escapada a Federación con precios exclusivos para afiliados ATE.",
+        back:{title:"Federación + Finde Largo", body:"Hotel Salto Grande · 2 noches con desayuno · Entrada a Termas · Opción media pensión y show.",
+              rows:[{i:"phone",t:"343 512 3635"},{i:"ig",t:"@turismoroadtrip"}], btn:"Consultar por WhatsApp", link:"https://wa.me/543435123635"}},
+      { name:"RoadTrip Turismo", tag:"Precio especial afiliados", color:"blue",
+        ph:{pre:"RoadTrip Turismo", name:"Federación — 23 al 25 de Mayo", badge:"23–25 Mayo", sub:"Termas · Show de humor · Excursiones"},
+        desc:"Finde largo en Federación con hotel, termas y show de humor incluidos.",
+        back:{title:"Federación · 23 al 25 de Mayo", body:"2 noches en Hotel Salto Grande · Show de humor · Día de termas · Excursiones incluidas.",
+              rows:[{i:"phone",t:"343 512 3635"},{i:"ig",t:"@turismoroadtrip"}], btn:"Consultar por WhatsApp", link:"https://wa.me/543435123635"}},
+      { name:"RoadTrip Turismo", tag:"Precio especial afiliados", color:"blue",
+        ph:{pre:"RoadTrip Turismo", name:"Salta — Norte Argentino", badge:"Salida 9 Sept.", sub:"Hotel Carlos IV · 4 noches · Cafayate · Purmamarca"},
+        desc:"Norte argentino con 4 noches en Salta y excursiones opcionales.",
+        back:{title:"Salta — Norte Argentino", body:"4 noches en Hotel Carlos IV con desayuno · Bus con servicio a bordo · Excursiones opcionales: Cafayate, Purmamarca, San Bernardo, Teleférico.",
+              rows:[{i:"phone",t:"343 512 3635"},{i:"ig",t:"@turismoroadtrip"}], btn:"Consultar por WhatsApp", link:"https://wa.me/543435123635"}},
+      { name:"Convenio Hospedaje ATE", tag:"136 convenios · 14 provincias", color:"green",
+        ph:{pre:"ATE Entre Ríos", name:"Hoteles · Cabañas · Campings", badge:"136 convenios · 14 provincias", sub:"Entre Ríos y todo el país"},
+        desc:"Convenio con hoteles, cabañas y campings en 14 provincias de todo el país.",
+        back:{title:"Convenio con hoteles, cabañas y campings", body:"ATE Entre Ríos tiene 136 convenios con hoteles, cabañas y campings en 14 provincias de todo el país.",
+              rows:[{i:"info",t:"136 convenios · 14 provincias"}], btn:"Ver listado de convenios (PDF)", link:"https://github.com/mauroalcaraz/atebeneficios/blob/main/ATE_Turismo_Convenios_2025%20(5).pdf"}},
+      { name:"Hotel Maunumby — Chajarí", tag:"20% de descuento", color:"teal",
+        ph:{pre:"Turismo", name:"Hotel Maunumby Chajarí", badge:"20% dto.", sub:"Sobre el canon diario de alojamiento"},
+        desc:"20% de descuento sobre el canon diario de alojamiento para afiliados y familia.",
+        back:{title:"Hotel Maunumby Chajarí", body:"20% de descuento sobre el canon diario de alojamiento para afiliados y familia.",
+              rows:[{i:"map",t:"Urquiza 1040, Chajarí, Entre Ríos"}], btn:"Ver ubicación", link:"https://maps.google.com/?q=Urquiza+1040+Chajari"}}
+    ]
+  },
+  {
+    id:"salud",
+    label:"Salud",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+    items:[
+      { name:"Óptica Carboni", tag:"Descuento + acumulable OSER", color:"navy",
+        ph:{pre:"Salud", name:"Óptica Carboni", badge:"Descuento especial", sub:"Acumulable con beneficio OSER"},
+        desc:"Descuentos especiales para afiliados ATE, acumulables con el beneficio de OSER.",
+        back:{title:"Óptica Carboni", body:"Descuentos especiales para afiliados a ATE. El beneficio es acumulable con la cobertura de OSER. Consultá las condiciones vigentes en el local.",
+              rows:[{i:"web",t:"opticacarboni.com.ar"}], btn:"Ver sitio web", link:"https://www.opticacarboni.com.ar/"}}
+    ]
+  },
+  {
+    id:"comercios",
+    label:"Comercios",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
+    items:[
+      { name:"Maravilloso Mundo", tag:"15% dto. los lunes y miércoles", color:"plum",
+        ph:{pre:"Librería · Juguetería", name:"Maravilloso Mundo", badge:"15% dto.", sub:"Todos los lunes y miércoles"},
+        desc:"15% de descuento en librería y juguetería los lunes y miércoles.",
+        back:{title:"Maravilloso Mundo — Librería y Juguetería", body:"15% de descuento todos los lunes y miércoles. Presentá tu carnet de afiliación al momento de la compra.",
+              rows:[{i:"web",t:"maravillosomundo.com.ar"}], btn:"Ver sitio web", link:"https://www.maravillosomundo.com.ar/"}}
+    ]
+  },
+  {
+    id:"salon",
+    label:"Salón de Eventos",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    items:[
+      { name:"Camping ATE Paraná", tag:"Infraestructura propia para afiliados", color:"green",
+        ph:{pre:"ATE Entre Ríos", name:"Salón para Eventos", badge:"Exclusivo afiliados", sub:"Camping ATE · Paraná"},
+        desc:"Salón con galería cubierta, quincho y amplios espacios verdes.",
+        back:{title:"Salón para Eventos — Camping ATE Paraná", body:"Galería cubierta con techo de madera, columnas de ladrillo visto, parrilla y amplios espacios verdes. Exclusivo para afiliados.",
+              rows:[{i:"info",t:"Consultá disponibilidad en sede ATE"}], btn:null}}
+    ]
+  },
+  {
+    id:"formacion",
+    label:"Formación",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>',
+    items:[
+      { name:"English Corner — San Benito", tag:"20% dto. + 100% bonif. inscripción", color:"teal",
+        ph:{pre:"Instituto de Inglés", name:"English Corner San Benito", badge:"20% dto.", sub:"+ 100% bonif. inscripción (10 primeros)"},
+        desc:"20% sobre la cuota mensual y 100% de bonificación en la inscripción para los primeros diez.",
+        back:{title:"Instituto de Inglés English Corner", body:"20% de descuento sobre la cuota mensual y 100% de bonificación en la inscripción para los diez primeros inscriptos.",
+              rows:[{i:"map",t:"Rivadavia 598, San Benito"},{i:"info",t:"Inicio abril — cupos limitados"}], btn:null}}
+    ]
+  },
+  {
+    id:"tecnologia",
+    label:"Tecnología",
+    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+    items:[
+      { name:"IMAX Servicio Técnico", tag:"Regalo exclusivo para afiliados", color:"navy",
+        ph:{pre:"Tecnología · SideCompras", name:"IMAX Servicio Técnico", badge:"Regalo sorpresa", sub:"Presentá recibo de sueldo y DNI"},
+        desc:"Obtené un regalo sorpresa por tu compra en IMAX a través de SideCompras.",
+        back:{title:"IMAX Servicio Técnico Informático", body:"Beneficio exclusivo para afiliados. Comprando a IMAX por la plataforma SideCompras obtenés un regalo sorpresa. Presentá tu recibo de sueldo y DNI luego de realizar la compra.",
+              rows:[{i:"info",t:"Plataforma: SideCompras"},{i:"info",t:"Requisito: recibo de sueldo + DNI"}], btn:"Ir a SideCompras", link:"https://sidecompras.com"}}
+    ]
+  }
+];
+
+function ico(t){
+  const s='width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"';
+  const m={
+    phone:`<svg ${s}><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6z"/></svg>`,
+    map:  `<svg ${s}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    web:  `<svg ${s}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
+    ig:   `<svg ${s}><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+    info: `<svg ${s}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
+  };
+  return m[t]||m.info;
+}
+
+function mkCard(item, uid){
+  const p = item.ph, b = item.back;
+  const isBlue = item.color === "blue";
+  const backClass = isBlue ? "fb blue-back" : "fb";
+  const btnClass  = isBlue ? "fb-btn blue-btn" : "fb-btn green-btn";
+  const ph = `<div class="ph ${item.color}">
+    <div class="ph-pre">${p.pre}</div>
+    <div class="ph-name">${p.name}</div>
+    <div class="ph-badge">${p.badge}</div>
+    ${p.sub ? `<div class="ph-sub">${p.sub}</div>` : ''}
+  </div>`;
+  const rows = (b.rows||[]).map(r=>`<div class="fb-r">${ico(r.i)}<span>${r.t}</span></div>`).join('');
+  const btn = b.btn
+    ? `<button class="${btnClass}" onclick="event.stopPropagation();${b.link?`window.open('${b.link}','_blank')`:''}">
+        ${b.btn}
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+       </button>` : '';
+  return `<div class="fw" id="${uid}" tabindex="0" role="button" aria-label="${item.name}"
+     onclick="flip('${uid}')" onkeydown="if(event.key==='Enter'||event.key===' ')flip('${uid}')">
+  <div class="fc">
+    <div class="ff">
+      ${ph}
+      <div class="fi">
+        <div class="fn">${item.name}</div>
+        <div class="fd">${item.desc}</div>
+        <span class="ft-tag">${item.tag}</span>
+      </div>
+      <div class="fh">ver más →</div>
+    </div>
+    <div class="${backClass}">
+      <button class="fb-x" onclick="event.stopPropagation();unflip('${uid}')" aria-label="Cerrar">✕</button>
+      <div class="fb-t">${b.title}</div>
+      <div class="fb-b">${b.body}${rows}</div>
+      ${btn}
+    </div>
+  </div>
+</div>`;
+}
+
+function flip(id)   { document.getElementById(id).classList.add('flipped'); }
+function unflip(id) { document.getElementById(id).classList.remove('flipped'); }
+
+function render(secId){
+  const page = document.getElementById('page');
+  const toShow = secId === 'todos' ? S : S.filter(s=>s.id===secId);
+  page.innerHTML = toShow.map(sec =>
+    `<div class="sec">
+      <div class="sec-t">${sec.icon}${sec.label}</div>
+      <div class="grid">${sec.items.map((item,i)=>mkCard(item,`fc-${sec.id}-${i}`)).join('')}</div>
+    </div>`
+  ).join('');
+}
+
+document.getElementById('tabs').addEventLis
